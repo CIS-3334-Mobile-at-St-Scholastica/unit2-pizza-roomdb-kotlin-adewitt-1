@@ -1,12 +1,17 @@
 package cis3334.kotlin_pizzaorderstart
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
 // --- File: Pizza.kt ---
 // Keep enums readable for beginners
 enum class PizzaSize { SMALL, MEDIUM, LARGE, XLARGE }
 enum class Topping { CHICKEN, PEPPERONI, GREEN_PEPPERS }
 
 // Simple model with a convenience description for the order text
+@Entity(tableName = "pizzas")
 data class Pizza(
+    @PrimaryKey(autoGenerate = true) val id: Long = 0,
     val size: PizzaSize = PizzaSize.MEDIUM,
     val toppings: Set<Topping> = emptySet()
 ) {
